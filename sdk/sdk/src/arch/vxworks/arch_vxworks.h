@@ -25,7 +25,8 @@
 #include <fcntl.h>
 #include <ioctl.h>
 #include <selectLib.h>
-#include <dirLib.h> // alternative to stat.h can be deleted if there are no references
+#include <dirent.h>
+//#include <dirLib.h> // alternative to stat.h can be deleted if there are no references
 
 //custom 
 #include "timer.h"  //for delay

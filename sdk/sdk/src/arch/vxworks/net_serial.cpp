@@ -34,10 +34,11 @@
 
 #include "arch_vxworks.h"
 
-#include "hal/types.h"
+#include "../../hal/types.h"
 #include "net_serial.h"
 #include <algorithm>
 
+#include <ioLib.h>
 
 namespace rp{ namespace arch{ namespace net{
 
@@ -228,8 +229,12 @@ int raw_serial::waitfordata(size_t data_count, _u32 timeout, size_t * returned_s
             {
                 int remain_timeout = timeout_val.tv_sec*1000000 + timeout_val.tv_usec;
                 int expect_remain_time = (data_count - *returned_size)*1000000*8/_baudrate;
-                if (remain_timeout > expect_remain_time)
-                    usleep(expect_remain_time);
+                if (remain_timeout > expect_remain_time) {
+                	struct timespec aux;
+                	aux.tv_sec = 0;
+                	aux.tv_nsec = expect_remain_time * 1000;
+                    nanosleep(&aux, NULL);
+                }
             }
         }
         

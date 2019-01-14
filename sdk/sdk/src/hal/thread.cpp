@@ -32,7 +32,7 @@
  *
  */
 
-#include "sdkcommon.h"
+#include "../sdkcommon.h"
 #include "hal/thread.h"
 
 #if defined(_WIN32)
