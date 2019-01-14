@@ -39,11 +39,15 @@
 #include <unistd.h>
 static inline void delay(_word_size_t ms){
     while (ms>=1000){
-        usleep(1000*1000);
+        sleep(1);
         ms-=1000;
     };
-    if (ms!=0)
-        usleep(ms*1000);
+    if (ms!=0) {
+        struct timespec aux;
+        aux.tv_sec = 0;
+        aux.tv_nsec = ms*1e6;
+        nanosleep(&aux, NULL);
+    }
 }
 
 // TODO: the highest timer interface should be clock_gettime

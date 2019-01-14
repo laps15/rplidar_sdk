@@ -32,7 +32,9 @@
  *
  */
 
-#if defined(_WIN32)
+#if defined(VXWORKS)
+#include "arch/vxworks/arch_vxworks.h"
+#elif defined(_WIN32)
 #include "arch\win32\arch_win32.h"
 #elif defined(_MACOS)
 #include "arch/macOS/arch_macOS.h"
