@@ -69,8 +69,8 @@ public:
 
     virtual size_t rxqueue_count() = 0;
 
-    virtual void setDTR() = 0;
-    virtual void clearDTR() = 0;
+//    virtual void setDTR() = 0;
+//    virtual void clearDTR() = 0;
     virtual void cancelOperation() {}
 
     virtual bool isOpened()

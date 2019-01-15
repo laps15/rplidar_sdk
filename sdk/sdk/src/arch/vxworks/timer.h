@@ -38,7 +38,7 @@
 
 #include <unistd.h>
 static inline void delay(_word_size_t ms){
-    while (ms>=1000){
+    while (ms>= (_word_size_t)1000){
         sleep(1);
         ms-=1000;
     };

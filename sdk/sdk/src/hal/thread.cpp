@@ -35,7 +35,9 @@
 #include "../sdkcommon.h"
 #include "hal/thread.h"
 
-#if defined(_WIN32)
+#if defined(_VXWORKS)
+#include "arch/vxworks/thread.hpp" 
+#elif defined(_WIN32)
 #include "arch/win32/winthread.hpp"
 #elif defined(_MACOS)
 #include "arch/macOS/thread.hpp"

@@ -92,7 +92,7 @@ u_result Thread::setPriority( priority_val_t p)
         break;
     }
 
-    current_param.__sched_priority = current_policy;
+    current_param.sched_priority = current_policy;
     if ( (ans = pthread_setschedparam( (pthread_t) this->_handle, current_policy, &current_param)) )
     {
         return RESULT_OPERATION_FAIL;
@@ -115,11 +115,11 @@ Thread::priority_val_t Thread::getPriority()
     int pthread_priority_max = sched_get_priority_max(SCHED_RR);
     int pthread_priority_min = sched_get_priority_min(SCHED_RR);
 
-    if (current_param.__sched_priority ==(pthread_priority_max ))
+    if (current_param.sched_priority ==(pthread_priority_max ))
     {
         return PRIORITY_REALTIME;
     }
-    if (current_param.__sched_priority >=(pthread_priority_max + pthread_priority_min)/2)
+    if (current_param.sched_priority >=(pthread_priority_max + pthread_priority_min)/2)
     {
         return PRIORITY_HIGH;
     }

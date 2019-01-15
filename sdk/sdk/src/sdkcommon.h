@@ -32,7 +32,11 @@
  *
  */
 
-#if defined(VXWORKS)
+#undef _WIN32
+#undef _MACOS
+#define _VXWORKS
+
+#if defined (_VXWORKS)
 #include "arch/vxworks/arch_vxworks.h"
 #elif defined(_WIN32)
 #include "arch\win32\arch_win32.h"
@@ -47,6 +51,6 @@
 #include "hal/types.h"
 #include "hal/assert.h"
 
-#include "rplidar.h"
+#include "../include/rplidar.h"
 
 #include "hal/util.h"

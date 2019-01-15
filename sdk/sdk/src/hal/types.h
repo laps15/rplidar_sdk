@@ -73,6 +73,9 @@ typedef unsigned long  _word_size_t;
 #elif defined (__ICCARM__)
 typedef _u32            _word_size_t;
 #define THREAD_PROC  
+#elif defined (_VXWORKS)
+typedef _u64 _word_size_t;
+#define THREAD_PROC
 #endif
 
 

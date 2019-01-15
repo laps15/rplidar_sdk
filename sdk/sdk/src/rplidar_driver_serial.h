@@ -78,14 +78,6 @@ public:
         lenRec = _rxtxSerial->recvdata(data, size);
         return lenRec;
     }
-    void setDTR()
-    {
-        _rxtxSerial->setDTR();
-    }
-    void clearDTR()
-    {
-        _rxtxSerial->clearDTR();
-    }
     void ReleaseRxTx()
     {
         rp::hal::serial_rxtx::ReleaseRxTx(_rxtxSerial);

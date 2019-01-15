@@ -915,7 +915,7 @@ static _u32 _crc32cal(_u32 crc, void* input, _u16 len)
     _u8 index;
     _u8* pch;
     pch = (unsigned char*)input;
-    _u8 leftBytes = 4 - len & 0x3;
+    _u8 leftBytes = 4 - (len & 0x3);
 
     for (i = 0; i<len; i++){
         index = (unsigned char)(crc^*pch);
@@ -1126,7 +1126,7 @@ void RPlidarDriverImplCommon::_ultraCapsuleToNormal(const rplidar_response_ultra
 
 
             dist_q2[0] = (dist_major << 2);
-            if ((dist_predict1 == 0xFFFFFE00) || (dist_predict1 == 0x1FF)) {
+            if (((unsigned int)dist_predict1 == 0xFFFFFE00) || ((unsigned int)dist_predict1 == 0x1FF)) {
                 dist_q2[1] = 0;
             } else {
                 dist_predict1 = (dist_predict1 << scalelvl1);
@@ -1134,7 +1134,7 @@ void RPlidarDriverImplCommon::_ultraCapsuleToNormal(const rplidar_response_ultra
 
             }
 
-            if ((dist_predict2 == 0xFFFFFE00) || (dist_predict2 == 0x1FF)) {
+            if (((unsigned int)dist_predict2 == 0xFFFFFE00) || ((unsigned int)dist_predict2 == 0x1FF)) {
                 dist_q2[2] = 0;
             } else {
                 dist_predict2 = (dist_predict2 << scalelvl2);

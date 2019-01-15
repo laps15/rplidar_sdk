@@ -63,7 +63,7 @@ public:
 
     virtual size_t rxqueue_count();
 
-    _u32 getTermBaudBitmap(_u32 baud);
+//    _u32 getTermBaudBitmap(_u32 baud);
 
     virtual void cancelOperation();
 
